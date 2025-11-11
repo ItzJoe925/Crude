@@ -15,6 +15,3 @@ class SmartDashboardSubsystem(commands2.SubsystemBase):
     def get_number(self):
         return self.stored_number
     
-    def periodic(self):
-        """This runs every robot cycle to update SmartDashboard"""
-        SmartDashboard.putNumber("Stored Number", self.stored_number)
