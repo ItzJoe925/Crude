@@ -16,11 +16,11 @@ class IncrementNumberCommand(commands2.Command):
         self.smart_dashboard_ss.increment_number()
         
         # Get the updated value
-        current_value = self.smart_dashboard_ss
+        current_value = self.smart_dashboard_ss.get_number()
 
         # Send the number to the SmartDashboard
         wpilib.SmartDashboard.putNumber("My Stored Number", current_value)
         logger.info("Increment command intialized")
-    
+     
     def isFinished(self):
         return True
