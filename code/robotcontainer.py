@@ -51,11 +51,7 @@ class RobotContainer:
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
-
-         commands2.button.JoystickButton(
-             self.controller,
-             wpilib.XboxController.Button.kA
-         ).onTrue(IncrementNumberCommand(self.smart_dashboard_ss))
+         self.Xbox.a().onTrue(IncrementNumberCommand(self.smart_dashboard_ss))
         
         # PS5 controller bindings (commented)
         # L1 button: first motor forward
