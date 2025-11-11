@@ -2,7 +2,7 @@ import commands2
 import wpilib
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 
-class IncrementNumberCommand(commands2.CommandBase):
+class IncrementNumberCommand(commands2.Command):
     def __init__(self, smart_dashboard_ss: SmartDashboardSubsystem):
         super().__init__()
         self.smart_dashboard_ss = smart_dashboard_ss
