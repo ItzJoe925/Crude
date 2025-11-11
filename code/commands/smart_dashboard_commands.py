@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger("smartdashboardsubsystem")
+
 import commands2
 import wpilib
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
@@ -17,6 +20,7 @@ class IncrementNumberCommand(commands2.Command):
 
         # Send the number to the SmartDashboard
         wpilib.SmartDashboard.putNumber("My Stored Number", current_value)
+        logger.info("Increment command intialized")
     
     def isFinished(self):
         return True
