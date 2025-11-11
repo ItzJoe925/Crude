@@ -6,7 +6,7 @@ class IncrementNumberCommand(commands2.Command):
     def __init__(self, smart_dashboard_ss: SmartDashboardSubsystem):
         super().__init__()
         self.smart_dashboard_ss = smart_dashboard_ss
-        self.addRequirements([self.smart_dashboard_ss])
+        self.addRequirements(self.smart_dashboard_ss)
 
     def initialize(self):
         # Increment the stored number 
