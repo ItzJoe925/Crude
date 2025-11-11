@@ -17,7 +17,8 @@ from constants import ELEC
 # Subsystems
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
-
+from commands.smart_dashboard_commands import IncrementNumberCommand
+from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin
 from commands.SecondMotorCommands import TriggerSpin
@@ -33,6 +34,8 @@ class RobotContainer:
         # Subsystems
         self.firstmotorsub = subsystems.FirstMotorSubsystem.FirstMotorSubsystemClass()
         self.secondmotorsub = subsystems.SecondMotorSubsystem.SecondMotorSubsystemClass()
+        self.smart_dashboard_ss = SmartDashboardSubsystem()
+        self.smart_dashboard_ss = SmartDashboardSubsystem()
 
         # Set default command for second motor (trigger-controlled)
        # self.secondmotorsub.setDefaultCommand(
@@ -43,13 +46,18 @@ class RobotContainer:
         self.configureButtonBindings()
 
     def configureButtonBindings(self):
-        # Xbox controller example bindings (commented)
+        # Xbox controller example binding
          self.Xbox.leftBumper().onTrue(ForwardSpin(self.firstmotorsub))
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
+
+         commands2.button.JoystickButton(
+             self.controller,
+             wpilib.XboxController.Button.kA
+         ).onTrue(IncrementNumberCommand(self.smart_dashboard_ss))
         
-        # PS5 controller bindings
+        # PS5 controller bindings (commented)
         # L1 button: first motor forward
         #Trigger(lambda: self.PS5.getL1Button()).onTrue(ForwardSpin(self.firstmotorsub))
         #Trigger(lambda: self.PS5.getL1Button()).onFalse(StopSpin(self.firstmotorsub))
