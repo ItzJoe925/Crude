@@ -86,7 +86,7 @@ class ShowEncoderValue(commands2.Command):
     def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass):
         super().__init__()
         self.firstmotorsub = firstmotorsubsystem
-        self.addRequirement(self.firstmotorsub)
+        self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
         # Get the current encoder position and show on SmartDashboard
