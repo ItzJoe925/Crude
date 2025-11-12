@@ -30,17 +30,3 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         #Reads the built-in relative encoder (Talon-FX Rotations)
         return self.first_motor.getRotorPosition().getValue()
     
-class ShowEncoderValue(commands2.Command):
-    def __init(self, firstmotorsubsystem):
-        super().__init__()
-        self.firstmotorsub = firstmotorsubsystem
-        self.addRequirement(self.firstmotorsub)
-
-    def initialize(self):
-        # Get the current encoder position and show on SmartDashboard
-        encoder_value = self.motor_subsystem.get_encoder_position()
-        wpilib.SmartDashboard.putNumber("First Motor Encoder Position", encoder_value)
-    
-    def isFinished(self):
-        # Command endsimmediately after updating the value
-        return True

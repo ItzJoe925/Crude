@@ -83,7 +83,7 @@ class  StopSpin(commands2.Command):
         #self.motorsub.stop()
 
 class ShowEncoderValue(commands2.Command):
-    def __init(self, firstmotorsubsystem: FirstMotorSubsystemClass):
+    def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass):
         super().__init__()
         self.firstmotorsub = firstmotorsubsystem
         self.addRequirement(self.firstmotorsub)
