@@ -2,24 +2,21 @@ import logging
 logger = logging.getLogger("firstmotorsubsystemlogger")
 
 import commands2
-import constants
+import wpilib
+from wpilib import XboxController
 from constants import OP
-
-
-
 from subsystems.FirstMotorSubsystem import FirstMotorSubsystemClass
 
 
 class  ForwardSpin(commands2.Command):
 
     def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass) -> None:
-
-        
+        super().__init__()
         self.firstmotorsub = firstmotorsubsystem
         self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
-        self.firstmotorsub.go_forward()
+        self.firstmotorsub.go_forward() 
         logger.info("Forward Command Initialized")  
 
     #def execute(self):
@@ -84,3 +81,18 @@ class  StopSpin(commands2.Command):
     #def end(self, interrupted: bool):
 
         #self.motorsub.stop()
+
+class ShowEncoderValue(commands2.Command):
+    def __init(self, firstmotorsubsystem: FirstMotorSubsystemClass):
+        super().__init__()
+        self.firstmotorsub = firstmotorsubsystem
+        self.addRequirement(self.firstmotorsub)
+
+    def initialize(self):
+        # Get the current encoder position and show on SmartDashboard
+        encoder_value = self.firstmotorsub.get_encoder_position()
+        wpilib.SmartDashboard.putNumber("First Motor Encoder Position", encoder_value)
+    
+    def isFinished(self):
+        # Command endsimmediately after updating the value
+        return True

@@ -3,9 +3,10 @@ logger = logging.getLogger("smartdashboardsubsystem")
 
 import commands2
 import wpilib
+from constants import OP
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 
-class IncrementNumberCommand(commands2.Command):
+class IncrementNumber(commands2.Command):
     def __init__(self, smart_dashboard_ss: SmartDashboardSubsystem):
         super().__init__()
         self.smart_dashboard_ss = smart_dashboard_ss

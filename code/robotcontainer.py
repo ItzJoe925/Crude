@@ -12,13 +12,13 @@ from constants import ELEC
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
 """imports for Increment System"""
-from commands.smart_dashboard_commands import IncrementNumberCommand
+from commands.smart_dashboard_commands import IncrementNumber
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin
 from commands.SecondMotorCommands import TriggerSpin
 """import for getting encoder"""
-from commands.encoder_commands import ShowEncoderValueCommand
+from commands.FirstMotorCommands import ShowEncoderValue
 
 class RobotContainer:
 
@@ -47,8 +47,8 @@ class RobotContainer:
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
-         self.Xbox.a().onTrue(IncrementNumberCommand(self.smart_dashboard_ss))
-         self.Xbox.b().onTrue(ShowEncoderValueCommand(self.firstmotorsub))
+         self.Xbox.a().onTrue(IncrementNumber(self.smart_dashboard_ss))
+         self.Xbox.b().onTrue(ShowEncoderValue(self.firstmotorsub))
         
         # PS5 controller bindings (commented)
         # L1 button: first motor forward

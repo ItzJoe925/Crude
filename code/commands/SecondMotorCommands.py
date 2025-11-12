@@ -2,6 +2,7 @@ import logging
 logger = logging.getLogger("secondmotorsubsystemlogger")
 
 import commands2
+import wpilib
 from wpilib import XboxController
 from constants import OP  
 from subsystems.SecondMotorSubsystem import SecondMotorSubsystemClass
