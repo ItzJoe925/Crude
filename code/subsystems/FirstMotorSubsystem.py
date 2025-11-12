@@ -10,13 +10,12 @@ from constants import ELEC
 
 
 class FirstMotorSubsystemClass(commands2.Subsystem):
-
     def __init__(self) -> None:
-
-
+        super().__init__()
+        # Create motor object
         self.first_motor = phoenix6.hardware.TalonFX(ELEC.first_motor_CAN_ID)
-        #self.my_motor.setNeutralMode(self.brakemode)
 
+    #Motor controls
     def go_forward(self):
         self.first_motor.set(ELEC.first_motor_forward)
 
@@ -24,5 +23,9 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         self.first_motor.set(ELEC.first_motor_reverse)
 
     def stop(self):
- 
         self.first_motor.set(ELEC.first_motor_stop)
+
+    #Encoder reading method
+    def get_encoder_position(self):
+        #Reads the built-in relative encoder (Talon-FX Rotations)
+        return self.first_motor.getRotorPosition().getValue()

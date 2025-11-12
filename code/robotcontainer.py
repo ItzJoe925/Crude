@@ -1,9 +1,3 @@
-#
-# Copyright (c) FIRST and other WPILib contributors.
-# Open Source Software; you can modify and/or share it under the terms of
-# the WPILib BSD license file in the root directory of this project.
-#
-
 import logging
 log = logging.Logger('P212-robot')
 import wpilib
@@ -17,12 +11,14 @@ from constants import ELEC
 # Subsystems
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
+"""imports for Increment System"""
 from commands.smart_dashboard_commands import IncrementNumberCommand
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin
 from commands.SecondMotorCommands import TriggerSpin
-
+"""import for getting encoder"""
+from commands.encoder_commands import ShowEncoderValueCommand
 
 class RobotContainer:
 
@@ -52,6 +48,7 @@ class RobotContainer:
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.a().onTrue(IncrementNumberCommand(self.smart_dashboard_ss))
+         self.Xbox.b().onTrue(ShowEncoderValueCommand(self.firstmotorsub))
         
         # PS5 controller bindings (commented)
         # L1 button: first motor forward

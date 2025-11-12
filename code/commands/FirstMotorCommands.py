@@ -1,8 +1,6 @@
 import logging
 logger = logging.getLogger("firstmotorsubsystemlogger")
 
-
-
 import commands2
 import constants
 from constants import OP
