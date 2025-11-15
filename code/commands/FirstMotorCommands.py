@@ -97,7 +97,7 @@ class ShowEncoderValue(commands2.Command):
 
 
         # Get the current encoder position and show on SmartDashboard
-        wpilib.SmartDashboard.putNumber("Current Encoder Degree",  )
+        wpilib.SmartDashboard.putNumber("Current Encoder Degree", wrapped_degrees  )
         wpilib.SmartDashboard.putNumber("First Motor Encoder Position", raw_rotations)
     
     def isFinished(self):
