@@ -89,10 +89,17 @@ class ShowEncoderValue(commands2.Command):
         self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
+        #read encoder wrapped degrees
+        wrapped_degrees = self.firstmotorsub.get_motor_position() 
+
+        #Raw rotations 
+        raw_rotations = self.firstmotorsub.first_motor.get_rotor_position().value
+
+
         # Get the current encoder position and show on SmartDashboard
-        encoder_value = self.firstmotorsub.get_encoder_position()
-        wpilib.SmartDashboard.putNumber("First Motor Encoder Position", encoder_value)
+        wpilib.SmartDashboard.putNumber("Current Encoder Degree",  )
+        wpilib.SmartDashboard.putNumber("First Motor Encoder Position", raw_rotations)
     
     def isFinished(self):
         # Command endsimmediately after updating the value
-        return True
+        return True 

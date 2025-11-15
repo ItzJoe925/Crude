@@ -26,7 +26,10 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         self.first_motor.set(ELEC.first_motor_stop)
 
     #Encoder reading method
-    def get_encoder_position(self):
+    def get_motor_position(self):
         #Reads the built-in relative encoder (Talon-FX Rotations)
-        return self.first_motor.getRotorPosition().getValue()
+        rotations = self.first_motor.get_rotor_Position().value
+        degrees = rotations * 360.0
+        wrapped = degrees % 360.0
+        return wrapped
     
