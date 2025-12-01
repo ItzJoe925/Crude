@@ -26,7 +26,7 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         config = configs.TalonFXConfiguration()
 
     # -- Gear Ratio --
-        config.feedback.sensor_to_mechanism_ratio = SW.First_Gear_Ratio
+        config.feedback.sensor_to_mechanism_ratio = SW.FirstMotor_Gear_Ratio
     
     # -- PID Configuration --
         slot0 = config.slot0
