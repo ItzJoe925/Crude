@@ -4,7 +4,7 @@ logger = logging.getLogger("firstmotorsubsystemlogger")
 import commands2
 import wpilib
 from wpilib import XboxController
-from constants import OP
+from constants import OP, SW
 from subsystems.FirstMotorSubsystem import FirstMotorSubsystemClass
 
 
@@ -103,3 +103,18 @@ class ShowEncoderValue(commands2.Command):
     def isFinished(self):
         # Command endsimmediately after updating the value
         return True 
+class MoveToPosition(commands2.Command):
+
+    def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass) -> None:
+        self.firstmotorsub = firstmotorsubsystem
+        self.addRequirements(self.firstmotorsub)
+
+    def initialize(self):
+        logger.info("MoveToPosition Command Initialized")
+        self.firstmotorsub.firstmotorPID(SW.FirstMotorSetpoint)
+
+    def isFinished(self):
+        return True
+
+    def end(self, interrupted):
+        logger.info("MoveToPosition Command ended booyah")

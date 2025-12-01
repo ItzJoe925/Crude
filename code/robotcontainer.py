@@ -8,15 +8,18 @@ from wpilib import XboxController
 #from wpilib import PS5Controller
 from constants import ELEC
 
-# Subsystems
+    # Subsystems
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
+
 """imports for Increment System"""
 from commands.smart_dashboard_commands import IncrementNumber
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
-# Commands
-from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin
+
+    # Commands
+from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin, MoveToPosition
 from commands.SecondMotorCommands import TriggerSpin
+
 """import for getting encoder"""
 from commands.FirstMotorCommands import ShowEncoderValue
 
@@ -49,7 +52,8 @@ class RobotContainer:
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.a().onTrue(IncrementNumber(self.smart_dashboard_ss))
          self.Xbox.b().onTrue(ShowEncoderValue(self.firstmotorsub))
-        
+         self.Xbox.y().onTrue(MoveToPosition(self.firstmotorsub))
+
         # PS5 controller bindings (commented)
         # L1 button: first motor forward
         #Trigger(lambda: self.PS5.getL1Button()).onTrue(ForwardSpin(self.firstmotorsub))
