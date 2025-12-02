@@ -67,5 +67,6 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         rotations = self.first_motor.get_rotor_position().value
         degrees = rotations * 360.0
         wrapped = degrees % 360.0
+        return wrapped
 
     
