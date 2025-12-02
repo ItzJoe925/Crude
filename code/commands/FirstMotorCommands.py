@@ -103,6 +103,7 @@ class ShowEncoderValue(commands2.Command):
     def isFinished(self):
         # Command endsimmediately after updating the value
         return True 
+    
 class MoveToPosition(commands2.Command):
 
     def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass) -> None:
@@ -117,4 +118,4 @@ class MoveToPosition(commands2.Command):
         return True
 
     def end(self, interrupted):
-        logger.info("MoveToPosition Command ended booyah")
+        logger.info("MoveToPosition Command ended")
