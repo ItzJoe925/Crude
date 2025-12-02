@@ -69,4 +69,18 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         wrapped = degrees % 360.0
         return wrapped
 
+    def periodic(self):
+        return super().periodic()
+        
+        #speed of first motor
+        velocity = self.first_motor.get_velocity().value
+
+        #rotation of first motor
+        rotations = self.first_motor.get_rotor_position().value
+
+        wpilib.SmartDashboard.putNumber("Live Rotations", rotations)
+        wpilib.SmartDashboard.putNumber("First Velocity", velocity)
+
+
+
     
