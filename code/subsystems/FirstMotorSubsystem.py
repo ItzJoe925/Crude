@@ -70,7 +70,7 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         return wrapped
 
     def periodic(self):
-        return super().periodic()
+       
         
         #speed of first motor
         velocity = self.first_motor.get_velocity().value
@@ -80,6 +80,8 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
 
         wpilib.SmartDashboard.putNumber("Live Rotations", rotations)
         wpilib.SmartDashboard.putNumber("First Motor Velocity", velocity)
+
+        return super().periodic()
 
 
 
