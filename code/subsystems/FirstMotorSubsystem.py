@@ -81,7 +81,6 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         wpilib.SmartDashboard.putNumber("Live Rotations", rotations)
         wpilib.SmartDashboard.putNumber("First Motor Velocity", velocity)
 
-        return super().periodic()
 
 
 

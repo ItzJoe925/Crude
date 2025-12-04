@@ -46,6 +46,8 @@ class RobotContainer:
 
     def configureButtonBindings(self):
         # Xbox controller example binding
+        #self.Xbox
+        #self.Xbox.right
          self.Xbox.leftBumper().onTrue(ForwardSpin(self.firstmotorsub))
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
