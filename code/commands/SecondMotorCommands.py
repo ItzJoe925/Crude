@@ -8,31 +8,37 @@ from constants import OP
 from subsystems.SecondMotorSubsystem import SecondMotorSubsystemClass
 
 
-#class TriggerSpin(commands2.Command):
+class TriggerSpin(commands2.Command):
 
-  #  def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass, controller: XboxController) -> None:
-     #   super().__init__()
-      #  self.secondmotorsub = secondmotorsubsystem
-       # self.controller = controller
-        #self.addRequirements(self.secondmotorsub)
+    def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass, controller: XboxController) -> None:
+        super().__init__()
+        self.secondmotorsub = secondmotorsubsystem
+        self.controller = controller
+        self.addRequirements(self.secondmotorsub)
 
-    #def initialize(self):
-      #2  logger.info("TriggerSpin Command Initialized")
+    def initialize(self):
+        logger.info("TriggerSpin Command Initialized")
 
-    #def execute(self):
+    def execute(self):
         # Read PS5 triggers
         #right = self.controller.getR2Axis()  # 0.0 → 1.0
         #left = self.controller.getL2Axis()   # 0.0 → 1.0
 
         # Read Xbox Triggers
-      ###### speed = 0.0
+        right = self.controller.getRightTriggerAxis()
+        left = self.controller.getLeftTriggerAxis()
+        speed = right - left                  # convert to -1.0 → +1.0
+
+        #optional: deadband to prevent small jitters
+        if abs (speed) <0.05:
+            speed = 0.0
             
-       # self.secondmotorsub.run(speed)
+        self.secondmotorsub.run(speed)
 
-    #def end(self, interrupted: bool):
-     #   self.secondmotorsub.stop()
-      #  logger.info("TriggerSpin Command Ended")
+    def end(self, interrupted: bool):
+        self.secondmotorsub.stop()
+        logger.info("TriggerSpin Command Ended")
 
-   # def isFinished(self):
-    #    # Never finishes on its own
-     #  return False
+    def isFinished(self):
+        # Never finishes on its own
+        return False
