@@ -59,7 +59,7 @@ sw_data = {
 #First Motor PID Values
   "FirstMotor_kp" : 3.0,  # Static friction
   "FirstMotor_ki" : 0.0,  # Velocity feedforward
-  "FirstMotor_kd" : 0.1,  # Acceleration feedforward raise if system needs to be faster
+  "FirstMotor_kd" : 0.5,  # Acceleration feedforward raise if system needs to be faster
 
   "FirstMotor_ks" : 0.2,  # Too high and will cause oscillation, too low will make it not reach desired place
   "FirstMotor_kv" : 0.12, # Helps fix small errors over time 
