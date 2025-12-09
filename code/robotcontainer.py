@@ -36,18 +36,20 @@ class RobotContainer:
         self.smart_dashboard_ss = SmartDashboardSubsystem()
         self.smart_dashboard_ss = SmartDashboardSubsystem()
 
+        self.secondmotorsub.setDefaultCommand(
+            TriggerSpin(self.secondmotorsub, self.Xbox.getHID)
+        )
+
         # Set default command for second motor (trigger-controlled)
        # self.secondmotorsub.setDefaultCommand(
           #  TriggerSpin(self.secondmotorsub, self.PS5)
         #)
 
-        # Configure buttons for first motor
+        # Configure buttons for motors
         self.configureButtonBindings()
 
     def configureButtonBindings(self):
         # Xbox controller example binding
-         #self.Xbox.getLeftTriggerAxis()(ForwardSpin(self.secondmotorsub))
-         #self.Xbox.getRightTriggerAxis()(ReverseSpin(self.secondmotorsub))
          self.Xbox.leftBumper().onTrue(ForwardSpin(self.firstmotorsub))
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
