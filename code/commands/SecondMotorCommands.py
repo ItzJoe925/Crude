@@ -25,17 +25,11 @@ class TriggerSpin(commands2.Command):
         #left = self.controller.getL2Axis()   # 0.0 → 1.0
 
         # Read Xbox Triggers
-        right = self.controller.getRightTriggerAxis()
-        left = self.controller.getLeftTriggerAxis()
-        speed = right - left                  # convert to -1.0 → +1.0
-
-        #optional: deadband to prevent small jitters
-        if abs (speed) <0.05:
-            speed = 0.0
+      ###### speed = 0.0
             
-        self.secondmotorsub.run(speed)
+       # self.secondmotorsub.run(speed)
 
-    def end(self, interrupted: bool):
+    #def end(self, interrupted: bool):
         self.secondmotorsub.stop()
         logger.info("TriggerSpin Command Ended")
 
