@@ -18,7 +18,7 @@ from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 
     # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin, MoveToPosition
-from commands.SecondMotorCommands import TriggerSpin
+from commands.SecondMotorCommands import SecondForwardSpin, SecondReverseSpin, SecondStopSpin
 
 """import for getting encoder"""
 from commands.FirstMotorCommands import ShowEncoderValue
@@ -54,9 +54,18 @@ class RobotContainer:
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
+         self.Xbox.x().onTrue(SecondForwardSpin(self.secondmotorsub))
+         self.Xbox.x().onFalse(SecondStopSpin(self.secondmotorsub))
          self.Xbox.a().onTrue(IncrementNumber(self.smart_dashboard_ss))
          self.Xbox.b().onTrue(ShowEncoderValue(self.firstmotorsub))
          self.Xbox.y().onTrue(MoveToPosition(self.firstmotorsub))
+         self.third_motor_subsystem.setDefaultCommand(
+    ThirdMotorTriggerSpin(
+        self.third_motor_subsystem,
+        self.driver_controller
+    )
+)
+
 
         # PS5 controller bindings (commented)
         # L1 button: first motor forward

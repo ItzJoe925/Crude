@@ -9,10 +9,10 @@ from subsystems.SecondMotorSubsystem import SecondMotorSubsystemClass
 
 
 class  SecondForwardSpin(commands2.Command):
-
+    
     def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass) -> None:
         super().__init__()
-        self.Secondmotorsub = secondmotorsubsystem
+        self.secondmotorsub = secondmotorsubsystem
         self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
@@ -22,7 +22,7 @@ class  SecondForwardSpin(commands2.Command):
     #def execute(self):
         
         #self.motorsub.go_forward
-        #logger.info("Forward Command Running")
+        #logger.info("Second Command Running")
 
     def isFinished(self):
 
