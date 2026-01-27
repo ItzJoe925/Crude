@@ -32,8 +32,8 @@ elec_data = {
   
  ## First motor
   "first_motor_CAN_ID": 6,
-  "first_motor_forward": 0.1,
-  "first_motor_reverse": -0.1,
+  "first_motor_forward": 0.05,
+  "first_motor_reverse": -0.05,
   "first_motor_stop":0.0,
 
   ## Second motor
