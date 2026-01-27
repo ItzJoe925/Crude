@@ -31,15 +31,15 @@ elec_data = {
   ##
   
  ## First motor
-  "first_motor_CAN_ID": 11,
-  "first_motor_forward": 1,
-  "first_motor_reverse": -1,
+  "first_motor_CAN_ID": 6,
+  "first_motor_forward": 0.1,
+  "first_motor_reverse": -0.1,
   "first_motor_stop":0.0,
 
   ## Second motor
-  "second_motor_CAN_ID": 1,
-  "second_motor_forward": 1,
-  "second_motor_reverse": -1,
+  "second_motor_CAN_ID": 3,
+  "second_motor_forward": 0.1,
+  "second_motor_reverse": -0.1,
   "second_motor_stop":0.0,
 
   ## Limit Switch
