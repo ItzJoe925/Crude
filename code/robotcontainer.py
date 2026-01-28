@@ -18,7 +18,7 @@ from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
 
     # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin, MoveToPosition
-from commands.SecondMotorCommands import TriggerSpin
+from commands.SecondMotorCommands import SecondForwardSpin,SecondReverseSpin
 
 """import for getting encoder"""
 from commands.FirstMotorCommands import ShowEncoderValue

@@ -8,11 +8,7 @@ logger = logging.getLogger("thirdmotorsubsystemlogger")
 
 class ThirdMotorTriggerSpin(commands2.Command):
 
-    def __init__(
-        self,
-        thirdmotorsubsystem: ThirdMotorSubsystemClass,
-        controller: XboxController
-    ) -> None:
+    def __init__(self,thirdmotorsubsystem: ThirdMotorSubsystemClass,controller: XboxController) -> None:
         super().__init__()
 
         self.thirdmotorsub = thirdmotorsubsystem

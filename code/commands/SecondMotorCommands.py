@@ -33,15 +33,15 @@ class  SecondForwardSpin(commands2.Command):
 
 class  SecondReverseSpin(commands2.Command):
 
-    def __init__(self, firstmotorsubsystem: SecondMotorSubsystemClass) -> None:
+    def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass) -> None:
 
         
-        self.firstmotorsub = firstmotorsubsystem
-        self.addRequirements(self.firstmotorsub)
+        self.secondmotorsub = secondmotorsubsystem
+        self.addRequirements(self.secondmotorsub)
 
     def initialize(self):
-        self.firstmotorsub.go_reverse()
-        logger.info("Reverse Command Initialized")
+        self.secojdmotorsub.go_reverse()
+        logger.info("second Reverse Command Initialized")
 
     #def execute(self):
 
@@ -58,13 +58,13 @@ class  SecondReverseSpin(commands2.Command):
 
 class  StopSpin(commands2.Command):
 
-    def __init__(self, firstmotorsubsystem: SecondMotorSubsystemClass) -> None:
+    def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass) -> None:
 
-        self.firstmotorsub = firstmotorsubsystem
-        self.addRequirements(self.firstmotorsub)
+        self.secondmotorsub = secondmotorsubsystem
+        self.addRequirements(self.secondmotorsub)
 
     def initialize(self):
-        self.firstmotorsub.stop()
+        self.secondmotorsub.stop()
         logger.info("Stop Command Initialized")
 
     #def execute(self):

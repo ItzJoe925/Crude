@@ -14,9 +14,7 @@ class ThirdMotorSubsystemClass(commands2.Subsystem):
     def __init__(self) -> None:
         super().__init__()
 
-        self.third_motor = phoenix6.hardware.TalonFX(
-            ELEC.third_motor_CAN_ID
-        )
+        self.third_motor = phoenix6.hardware.TalonFX(ELEC.third_motor_CAN_ID)
 
         self.request = VoltageOut(0)
 
