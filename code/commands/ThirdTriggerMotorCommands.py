@@ -10,7 +10,6 @@ class ThirdMotorTriggerSpin(commands2.Command):
 
     def __init__(self,thirdmotorsubsystem: ThirdMotorSubsystemClass,controller: XboxController) -> None:
         super().__init__()
-
         self.thirdmotorsub = thirdmotorsubsystem
         self.controller = controller
         self.addRequirements(self.thirdmotorsub)
@@ -23,10 +22,6 @@ class ThirdMotorTriggerSpin(commands2.Command):
         left = self.controller.getLeftTriggerAxis()
 
         speed = right - left  # -1.0 → +1.0
-
-        if abs(speed) < 0.05:
-            speed = 0.0
-
         self.thirdmotorsub.run(speed)
 
     def end(self, interrupted: bool):
