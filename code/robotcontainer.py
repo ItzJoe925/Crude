@@ -37,8 +37,13 @@ class RobotContainer:
         self.secondmotorsub = subsystems.SecondMotorSubsystem.SecondMotorSubsystemClass()
         self.smart_dashboard_ss = SmartDashboardSubsystem()
         self.smart_dashboard_ss = SmartDashboardSubsystem()
+        self.thirdmotorsub = subsystems.ThirdMotorSubsystem.ThirdMotorSubsystemClass()
 
-        self.thirdmotorsub.setDefaultCommand(ThirdMotorTriggerSpin(self.thirdmotorsub, self.Xbox.getHID))
+        # Trigger controlled motor
+        self.thirdmotorsub.setDefaultCommand(
+    ThirdMotorTriggerSpin(self.thirdmotorsub, self.Xbox.getHID())
+)
+
 
         # Set default command for second motor (trigger-controlled)
        # self.secondmotorsub.setDefaultCommand(
