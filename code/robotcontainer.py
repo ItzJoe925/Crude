@@ -11,6 +11,7 @@ from constants import ELEC
     # Subsystems
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
+import subsystems.ThirdMotorSubsystem
 
 """imports for Increment System"""
 from commands.smart_dashboard_commands import IncrementNumber
@@ -19,6 +20,7 @@ from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
     # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin, MoveToPosition
 from commands.SecondMotorCommands import SecondForwardSpin,SecondReverseSpin
+from commands.ThirdTriggerMotorCommands import ThirdMotorTriggerSpin
 
 """import for getting encoder"""
 from commands.FirstMotorCommands import ShowEncoderValue
@@ -36,9 +38,7 @@ class RobotContainer:
         self.smart_dashboard_ss = SmartDashboardSubsystem()
         self.smart_dashboard_ss = SmartDashboardSubsystem()
 
-        #self.secondmotorsub.setDefaultCommand(
-        #    TriggerSpin(self.secondmotorsub, self.Xbox.getHID)
-        #)
+        self.thirdmotorsub.setDefaultCommand(ThirdMotorTriggerSpin(self.thirdmotorsub, self.Xbox.getHID))
 
         # Set default command for second motor (trigger-controlled)
        # self.secondmotorsub.setDefaultCommand(
