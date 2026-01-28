@@ -40,7 +40,12 @@ elec_data = {
   "second_motor_CAN_ID": 3,
   "second_motor_forward": 1,
   "second_motor_reverse": -1,
+  "second_motor_forward": 0.1,
+  "second_motor_reverse": -0.1,
   "second_motor_stop":0.0,
+
+  ## Trigger motor
+  "third_motor_CAN_ID": 3,
 
   ## Limit Switch
   "limit_switch_port":0,

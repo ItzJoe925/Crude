@@ -54,6 +54,7 @@ class RobotContainer:
          self.Xbox.leftBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onTrue(ReverseSpin(self.firstmotorsub))
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
+         #self.Xbox.x()onTrue()
          self.Xbox.a().onTrue(IncrementNumber(self.smart_dashboard_ss))
          self.Xbox.b().onTrue(ShowEncoderValue(self.firstmotorsub))
          self.Xbox.y().onTrue(MoveToPosition(self.firstmotorsub))
