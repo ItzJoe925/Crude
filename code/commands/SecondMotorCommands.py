@@ -12,7 +12,7 @@ class  SecondForwardSpin(commands2.Command):
     def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass) -> None:
         super().__init__()
         self.secondmotorsub = secondmotorsubsystem
-        self.addRequirements(self.firstmotorsub)
+        self.addRequirements(self.secondmotorsub)
 
     def initialize(self):
         self.secondmotorsub.go_forward() 
@@ -81,37 +81,8 @@ class  StopSpin(commands2.Command):
 
         #self.motorsub.stop()
 
-#class TriggerSpin(commands2.Command):
-
-    #def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass, controller: XboxController) -> None:
-       # super().__init__()
-        #self.secondmotorsub = secondmotorsubsystem
-        #self.controller = controller
-        #self.addRequirements(self.secondmotorsub)
-
-    #def initialize(self):
-        #logger.info("TriggerSpin Command Initialized")
-
-    #def execute(self):
-        # Read PS5 triggers
-        #right = self.controller.getR2Axis()  # 0.0 → 1.0
-        #left = self.controller.getL2Axis()   # 0.0 → 1.0
-
-        # Read Xbox Triggers
-       # right = self.controller.getRightTriggerAxis()
-       # left = self.controller.getLeftTriggerAxis()
-       # speed = right - left                  # convert to -1.0 → +1.0
-
-        #optional: deadband to prevent small jitters
-     #   if abs (speed) <0.05:
-       #     speed = 0.0
-            
-      #  self.secondmotorsub.run(speed)
-
-   # def end(self, interrupted: bool):
-    #    self.secondmotorsub.stop()
-     #   logger.info("TriggerSpin Command Ended")
-
-   # def isFinished(self):
-        # Never finishes on its own
-       # return False
+    def get_encoder_position(self) -> float:
+        rotations2 = self.second_motor.get_rotor_position().value
+        degrees2 = rotations2 * 360.0 
+        wrapped2 = degrees2 % 360.0 
+        return wrapped2

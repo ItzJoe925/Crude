@@ -32,8 +32,8 @@ elec_data = {
   
  ## First motor
   "first_motor_CAN_ID": 6,
-  "first_motor_forward": 0.2,
-  "first_motor_reverse": -0.2,
+  "first_motor_forward": 0.1,
+  "first_motor_reverse": -0.1,
   "first_motor_stop":0.0,
 
   ## Second motor
@@ -43,9 +43,6 @@ elec_data = {
   "second_motor_forward": 0.1,
   "second_motor_reverse": -0.1,
   "second_motor_stop":0.0,
-
-  ## Trigger motor
-  "third_motor_CAN_ID": 3,
 
   ## Limit Switch
   "limit_switch_port":0,
@@ -79,6 +76,25 @@ sw_data = {
   
   # Setpoint for testing
   "FirstMotorSetpoint": 10.0,       #number of rotations to move to
+
+  #Second Motor PID Values
+  "SecondMotor_kp" : 3.0,  # Static friction
+  "SecondMotor_ki" : 0.0,  # Velocity feedforward
+  "SecondMotor_kd" : 0.1,  # Acceleration feedforward raise if system needs to be faster
+
+  "SecondMotor_ks" : 0.2,  # Too high and will cause oscillation, too low will make it not reach desired place
+  "SecondMotor_kv" : 0.12, # Helps fix small errors over time 
+  "SecondMotor_ka" : 0.0,  # Stabalizing, fixes over shoot
+
+# Motion Magic
+  "SecondMotor_Cruise_Velocity": 40, # rotations/sec   Max Speed
+  "SecondMotor_Acceleration": 80,    # rotations/sec^2 How fast it can accelerate
+  "SecondMotor_Jerk": 0,             # optional        First push to start acceleration
+
+  "SecondMotor_Gear_Ratio": 1.0,     #change if motor has gearing
+  
+  # Setpoint for testing
+  "SecondMotorSetpoint": 10.0,       #number of rotations to move to
 
 
 
