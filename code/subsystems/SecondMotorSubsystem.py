@@ -16,77 +16,56 @@ class SecondMotorSubsystemClass(commands2.Subsystem):
         super().__init__()
 
     #Create Motor--------------------------------------------------------------
-        self.first_motor = phoenix6.hardware.TalonFX(ELEC.first_motor_CAN_ID)
+        self.second_motor = phoenix6.hardware.TalonFX(ELEC.second_motor_CAN_ID)
     #--------------------------------------------------------------------------
 
-        """  PID Settings  """
+#PID Settings  
 
     # -- Motion Magic Control Mode --
         self.motion_magic = MotionMagicVoltage(0)
         config = configs.TalonFXConfiguration()
 
     # -- Gear Ratio --
-        config.feedback.sensor_to_mechanism_ratio = SW.FirstMotor_Gear_Ratio
+        config.feedback.sensor_to_mechanism_ratio = SW.SecondMotor_Gear_Ratio
     
     # -- PID Configuration --
         slot0 = config.slot0
-        slot0.k_s = SW.FirstMotor_ks
-        slot0.k_v = SW.FirstMotor_kv
-        slot0.k_a = SW.FirstMotor_ka
-        slot0.k_p = SW.FirstMotor_kp
-        slot0.k_i = SW.FirstMotor_ki
-        slot0.k_d = SW.FirstMotor_kd
+        slot0.k_s = SW.SecondMotor_ks
+        slot0.k_v = SW.SecondMotor_kv
+        slot0.k_a = SW.SecondMotor_ka
+        slot0.k_p = SW.SecondMotor_kp
+        slot0.k_i = SW.SecondMotor_ki
+        slot0.k_d = SW.SecondMotor_kd
     
     # -- Motion Magic Settings --
-        config.motion_magic.motion_magic_cruise_velocity = SW.FirstMotor_Cruise_Velocity
-        config.motion_magic.motion_magic_acceleration = SW.FirstMotor_Acceleration
-        config.motion_magic.motion_magic_jerk = SW.FirstMotor_Jerk
+        config.motion_magic.motion_magic_cruise_velocity = SW.SecondMotor_Cruise_Velocity
+        config.motion_magic.motion_magic_acceleration = SW.SecondMotor_Acceleration
+        config.motion_magic.motion_magic_jerk = SW.SecondMotor_Jerk
 
     # -- Apply Full Configuration --
-        self.first_motor.configurator.apply(config)
+        self.second_motor.configurator.apply(config)
 
 #------------------------------------------------------------------------------
 
-"""
 
-    """  Motor Controls  """
-    def go_forward(self):
-        self.second_motor.set(ELEC.second_motor_forward)
-
-    def go_reverse(self):
-        self.second_motor.set(ELEC.second_motor_reverse)
-
-    def stop(self):
-        self.second_motor.set(ELEC.second_motor_stop)
-
-"""
     # -- PID MotionMagic Control --
-    def firstmotorPID(self, target):
-        self.first_motor.set_control(self.motion_magic.with_position(target).with_slot(0))
+    def secondmotorPID(self,target):
+        self.second_motor.set_control(self.motion_magic.with_position(target).with_slot(0))
 
     # -- Encoder reading --
     def get_motor_position(self):
         #Reads the built-in relative encoder (Talon-FX Rotations)
-        rotations = self.first_motor.get_rotor_position().value
+        rotations = self.second_motor.get_rotor_position().value
         degrees = rotations * 360.0
         wrapped = degrees % 360.0
         return wrapped
 
     def periodic(self):
-       
-       
-        
         #speed of first motor
-        velocity = self.first_motor.get_velocity().value
+        velocity2 = self.second_motor.get_velocity().value
 
         #rotation of first motor
-        rotations = self.first_motor.get_rotor_position().value
+        rotations2 = self.second_motor.get_rotor_position().value
 
-        wpilib.SmartDashboard.putNumber("Live Rotations", rotations)
-        wpilib.SmartDashboard.putNumber("First Motor Velocity", velocity)
-
-"""
-
-
-
-    
+        wpilib.SmartDashboard.putNumber("Second Motor Live Rotations", rotations2)
+        wpilib.SmartDashboard.putNumber("Second Motor Velocity", velocity2)

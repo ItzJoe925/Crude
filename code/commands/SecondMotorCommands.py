@@ -4,11 +4,12 @@ logger = logging.getLogger("secondmotorsubsystemlogger")
 import commands2 
 import wpilib
 from wpilib import XboxController
-from constants import OP  
+from constants import OP, SW
 from subsystems.SecondMotorSubsystem import SecondMotorSubsystemClass
 
-class  SecondForwardSpin(commands2.Command):
 
+class  SecondForwardSpin(commands2.Command):
+    
     def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass) -> None:
         super().__init__()
         self.secondmotorsub = secondmotorsubsystem
@@ -16,12 +17,12 @@ class  SecondForwardSpin(commands2.Command):
 
     def initialize(self):
         self.secondmotorsub.go_forward() 
-        logger.info("Forward Command Initialized")  
+        logger.info("Second Forward Command Initialized")  
 
     #def execute(self):
         
         #self.motorsub.go_forward
-        #logger.info("Forward Command Running")
+        #logger.info("Second Command Running")
 
     def isFinished(self):
 
@@ -30,6 +31,7 @@ class  SecondForwardSpin(commands2.Command):
     #def end(self, interrupted: bool):
 
         #self.motorsub.stop()
+#_______________________________________________________________________________________
 
 class  SecondReverseSpin(commands2.Command):
 
@@ -40,8 +42,8 @@ class  SecondReverseSpin(commands2.Command):
         self.addRequirements(self.secondmotorsub)
 
     def initialize(self):
-        self.secojdmotorsub.go_reverse()
-        logger.info("second Reverse Command Initialized")
+        self.secondmotorsub.go_reverse()
+        logger.info("Second Reverse Command Initialized")
 
     #def execute(self):
 
@@ -56,7 +58,7 @@ class  SecondReverseSpin(commands2.Command):
 
         #self.motorsub.stop()
 
-class  StopSpin(commands2.Command):
+class  SecondStopSpin(commands2.Command):
 
     def __init__(self, secondmotorsubsystem: SecondMotorSubsystemClass) -> None:
 
@@ -65,7 +67,7 @@ class  StopSpin(commands2.Command):
 
     def initialize(self):
         self.secondmotorsub.stop()
-        logger.info("Stop Command Initialized")
+        logger.info("Second Stop Command Initialized")
 
     #def execute(self):
         #self.motorsub.stop
