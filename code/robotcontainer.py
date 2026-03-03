@@ -16,12 +16,16 @@ import subsystems.FourthMotorSubsystem
 """imports for Increment System"""
 from commands.smart_dashboard_commands import IncrementNumber
 from subsystems.smart_dashboard_ss import SmartDashboardSubsystem
+from subsystems.HoodActuatorSubsystem import HoodActuatorSubsystem
+from subsystems.ShooterFeederSubsystem import ShooterFeederSubsystem
 
     # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin, MoveToPosition
 from commands.SecondMotorCommands import SecondForwardSpin, SecondReverseSpin, SecondStopSpin
 from commands.ThirdTriggerMotorCommands import ThirdMotorTriggerSpin
 from commands.FourthMotorCommands import FourthForwardSpin, FourthReverseSpin, FourthStopSpin
+from commands.HoodActuatorCommands import HoodActuatorUp, HoodActuatorDown
+from commands.ShooterFeederCommands import PrimeAndFeedSequence, StopShooterFeeder
 
 """import for getting encoder"""
 from commands.FirstMotorCommands import ShowEncoderValue
@@ -39,6 +43,9 @@ class RobotContainer:
         
         self.smart_dashboard_ss = SmartDashboardSubsystem()
         self.smart_dashboard_ss = SmartDashboardSubsystem()
+
+        self.hood_actuator_sub = HoodActuatorSubsystem()
+        self.shooter_feeder_sub = ShooterFeederSubsystem()
 
         #self.secondmotorsub.setDefaultCommand(
         #    TriggerSpin(self.secondmotorsub, self.Xbox.getHID)
@@ -60,14 +67,21 @@ class RobotContainer:
          self.Xbox.rightBumper().onFalse(StopSpin(self.firstmotorsub))
          self.Xbox.x().onTrue(SecondForwardSpin(self.secondmotorsub))
          self.Xbox.x().onFalse(SecondStopSpin(self.secondmotorsub))
+
+# D-pad control for shooter hood linear actuator
+         self.Xbox.pov(0).onTrue(HoodActuatorUp(self.hood_actuator_sub))
+         self.Xbox.pov(180).onTrue(HoodActuatorDown(self.hood_actuator_sub))
+
          #self.Xbox.a().onTrue(IncrementNumber(self.smart_dashboard_ss))
          #self.Xbox.b().onTrue(ShowEncoderValue(self.firstmotorsub))
          #self.Xbox.y().onTrue(MoveToPosition(self.firstmotorsub))
+
+
          self.third_motor_subsystem.setDefaultCommand(ThirdMotorTriggerSpin(self.third_motor_subsystem,self.driver_controller))
-         self.Xbox.pov(0).onTrue(FourthForwardSpin(self.fourthmotorsub))
-         self.Xbox.pov(0).onFalse(FourthStopSpin(self.fourthmotorsub))
-         self.Xbox.pov(180).onTrue(FourthReverseSpin(self.fourthmotorsub))
-         self.Xbox.pov(180).onFalse(FourthStopSpin(self.fourthmotorsub))
+         #self.Xbox.pov(0).onTrue(FourthForwardSpin(self.fourthmotorsub))
+         #self.Xbox.pov(0).onFalse(FourthStopSpin(self.fourthmotorsub))
+         #self.Xbox.pov(180).onTrue(FourthReverseSpin(self.fourthmotorsub))
+         #self.Xbox.pov(180).onFalse(FourthStopSpin(self.fourthmotorsub))
         # PS5 controller bindings (commented)
         # L1 button: first motor forward
         #Trigger(lambda: self.PS5.getL1Button()).onTrue(ForwardSpin(self.firstmotorsub))

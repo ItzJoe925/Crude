@@ -44,6 +44,25 @@ elec_data = {
 
   ## Third motor
   "third_trigger_motor_CAN_ID": 0,
+  
+ ## Hood actuator servo
+  "hood_actuator_pwm_port": 0,
+  "hood_actuator_step": 0.05,
+  "hood_actuator_start_position": 0.5,
+  "hood_actuator_min_position": 0.0,
+  "hood_actuator_max_position": 1.0,
+
+
+  ## Shooter + feeder subsystem (5 motors)
+  "shooter_motor_1_CAN_ID": 10,
+  "shooter_motor_2_CAN_ID": 11,
+  "shooter_motor_3_CAN_ID": 12,
+  "shooter_torque_motor_CAN_ID": 13,
+  "feeder_motor_CAN_ID": 14,
+
+  "shooter_motor_speed": 0.6,
+  "shooter_torque_motor_speed": 0.4,
+  "feeder_motor_speed": 0.25,
 
   ## Fourth Motor 
   "fourth_motor_CAN_ID":1,

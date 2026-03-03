@@ -48,6 +48,16 @@ class SecondMotorSubsystemClass(commands2.Subsystem):
 #------------------------------------------------------------------------------
 
 
+    def go_forward(self):
+        self.second_motor.set(ELEC.second_motor_forward)
+
+    def go_reverse(self):
+        self.second_motor.set(ELEC.second_motor_reverse)
+
+    def stop(self):
+        self.second_motor.set(ELEC.second_motor_stop)
+
+
     # -- PID MotionMagic Control --
     def secondmotorPID(self,target):
         self.second_motor.set_control(self.motion_magic.with_position(target).with_slot(0))
