@@ -55,7 +55,6 @@ class  SecondReverseSpin(commands2.Command):
         return True
 
     #def end(self, interrupted: bool):
-
         #self.motorsub.stop()
 
 class  SecondStopSpin(commands2.Command):

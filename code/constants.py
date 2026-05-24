@@ -60,7 +60,7 @@ elec_data = {
   "shooter_torque_motor_CAN_ID": 13,
   "feeder_motor_CAN_ID": 14,
 
-  "test_coding": 6.7,
+  "test_coding": 6.0,
   "shooter_motor_speed": 0.6,
   "shooter_torque_motor_speed": 0.4,
   "feeder_motor_speed": 0.25,

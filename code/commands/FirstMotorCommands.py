@@ -24,7 +24,7 @@ class  ForwardSpin(commands2.Command):
         #self.motorsub.go_forward
         #logger.info("Forward Command Running")
 
-    def isFinished(self):
+    def isFinished(self):   
 
         return True
 
@@ -71,8 +71,6 @@ class  StopSpin(commands2.Command):
     #def execute(self):
         #self.motorsub.stop
         #logger.info("Stop Command Running")
-
-
 
     def isFinished(self):
 
